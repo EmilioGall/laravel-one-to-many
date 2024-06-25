@@ -38,7 +38,9 @@ class ProjectController extends Controller
     public function store(CreateProjectRequest $request)
     {
 
-        $projectsDataArray = $request->all();
+        // dd($request);
+
+        $projectsDataArray = $request->validated();
 
         // dd($projectsDataArray);
 
