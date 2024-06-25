@@ -31,7 +31,7 @@
                      </a>
 
                   </div>
-                  
+
                </div>
 
                {{-- Form Section --}}
@@ -60,6 +60,26 @@
                                  {{ $message }}
                               </div>
                            @enderror
+
+                        </div>
+
+                        {{-- Select Type --}}
+                        <div class="col-12">
+
+                           <select class="form-select"
+                              aria-label="Select Type"
+                              id="type_id"
+                              name="type_id">
+
+                              <option @selected(old('type') === null) selected>Choose a type...</option>
+
+                              <option @selected(old('type') === '1') value="1">Front-End</option>
+
+                              <option @selected(old('type') === '2') value="2">Back-End</option>
+
+                              <option @selected(old('type') === '3') value="3">Full-Stack</option>
+
+                           </select>
 
                         </div>
 
