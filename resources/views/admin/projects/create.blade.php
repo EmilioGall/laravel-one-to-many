@@ -71,13 +71,13 @@
                               id="type_id"
                               name="type_id">
 
-                              <option @selected(old('type') === null) selected>Choose a type...</option>
+                              <option @selected(old('type_id') == null)>Choose a type...</option>
 
-                              <option @selected(old('type') === '1') value="1">Front-End</option>
-
-                              <option @selected(old('type') === '2') value="2">Back-End</option>
-
-                              <option @selected(old('type') === '3') value="3">Full-Stack</option>
+                              @foreach ($typesCollection as $type)
+                                 <option @selected(old('type_id') == $type->id) value="{{ $type->id }}" >
+                                    {{ $type->name }}
+                                 </option>
+                              @endforeach
 
                            </select>
 

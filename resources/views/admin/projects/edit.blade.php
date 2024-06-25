@@ -67,6 +67,28 @@
 
                         </div>
 
+                        {{-- Select Type --}}
+                        <div class="col-12">
+
+                           <select class="form-select"
+                              aria-label="Select Type"
+                              id="type_id"
+                              name="type_id">
+
+                              <option @selected(old('type_id') == null) value="">
+                                 Choose a type...
+                              </option>
+
+                              @foreach ($typesCollection as $type)
+                                 <option @selected(old('type_id', $project->type_id) == $type->id) value="{{ $type->id }}">
+                                    {{ $type->name }}
+                                 </option>
+                              @endforeach
+
+                           </select>
+
+                        </div>
+
                         {{-- Description Input --}}
                         <div class="col-12">
 
