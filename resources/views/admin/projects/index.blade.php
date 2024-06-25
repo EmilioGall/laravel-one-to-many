@@ -6,7 +6,7 @@
 
       <div class="row justify-content-center">
 
-         <div class="col-md-8 mt-4">
+         <div class="col-md-10 mt-4">
 
             <div class="card">
 
@@ -35,13 +35,14 @@
 
                <div class="card-body">
 
-                  <table class="table">
+                  <table class="table table-hover">
 
                      <thead>
 
                         <tr>
-                           <th scope="col">#</th>
+                           <th scope="col">Slug</th>
                            <th scope="col">Title</th>
+                           <th scope="col">Type</th>
                            <th scope="col">Description</th>
                            <th scope="col">Actions</th>
                         </tr>
@@ -52,12 +53,18 @@
 
                         @foreach ($projectsArray as $project)
                            <tr>
+
                               <th scope="row">
                                  <a
                                     href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">{{ $project['slug'] }}</a>
                               </th>
+
                               <td>{{ $project['title'] }}</td>
+
+                              <td>{{ $project->type?->name ? $project->type?->name : '/' }}</td>
+
                               <td>{{ substr($project['description'], 0, 20) }}...</td>
+
                               <td class="d-flex gap-2">
 
                                  {{-- Modify Button --}}
@@ -83,6 +90,7 @@
                                  </form>
 
                               </td>
+
                            </tr>
                         @endforeach
 
