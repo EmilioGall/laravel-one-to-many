@@ -54,6 +54,11 @@
                         <ul class="d-flex flex-column justify-content-end list-unstyled mb-0">
 
                            <li>
+                              <h4 class="fs-3 fw-bold">Project Type: <em class="fs-4 fw-lighter">{{ $project->type->name }}</em>
+                              </h4>
+                           </li>
+
+                           <li>
                               <h4 class="fs-3 fw-bold">Project Id: <em class="fs-4 fw-lighter">#{{ $project->id }}</em>
                               </h4>
                            </li>
