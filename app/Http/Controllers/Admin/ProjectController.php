@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -29,7 +30,12 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+
+        $typesCollection = Type::all();
+
+        // dd($typesCollection);
+
+        return view('admin.projects.create', compact('typesCollection'));
     }
 
     /**
@@ -68,7 +74,14 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+
+        // dd($project);
+
+        $typesCollection = Type::all();
+
+        // dd($typesCollection);
+
+        return view('admin.projects.edit', compact('project', 'typesCollection'));
     }
 
     /**
@@ -77,7 +90,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
 
-        $projectsDataArray = $request->all();
+        $projectsDataArray = $request->validated();
 
         // dd($projectsDataArray);
 
@@ -85,7 +98,7 @@ class ProjectController extends Controller
         $project['slug'] = Str::slug($project['title'], '_');
         $project->save();
 
-        return redirect()->route('admin.projects.index', ['project' => $project->slug]);
+        return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
     /**

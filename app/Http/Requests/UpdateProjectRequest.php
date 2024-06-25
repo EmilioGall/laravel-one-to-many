@@ -24,6 +24,7 @@ class UpdateProjectRequest extends FormRequest
         return [
 
             'title' => ['required', 'min:3'],
+            'type_id' => ['nullable'],
             'description' => ['min:20']
 
         ];
